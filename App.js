@@ -3,9 +3,11 @@ import { View, Text, StyleSheet, Button, TextInput } from "react-native";
 import Constants from "expo-constants";
 import * as Speech from "expo-speech";
 
-export default function App() {
+const App = () => {
   // State to store user's input text
   const [text, setText] = useState("");
+
+  // var text1 = "";
 
   // State to manage speech status (speaking or not)
   const [speaking, setSpeaking] = useState(false);
@@ -45,19 +47,18 @@ export default function App() {
       </View>
 
       <View style={styles.container}>
-        {/* Use KeyboardAvoidingView to handle keyboard display */}
-        <View style={styles.keyboardContainer}>
-          <View style={styles.inputContainer}>
-            {/* Text input field for user to enter text */}
-            <TextInput
-              value={text}
-              style={styles.input}
-              placeholder="Enter text to speak..."
-              onChangeText={(value) => setText(value)} // Update the 'text' state with user input
-              multiline={true} // Allow multiple lines in the input field
-            />
-          </View>
+        <View style={styles.inputContainer}>
+          {/* Text input field for user to enter text */}
+          <TextInput
+            value={text}
+            style={styles.input}
+            placeholder="Enter text to speak..."
+            onChangeText={(value) => setText(value)} // Update the 'text' state with user input
+            // onChangeText={(value) => (text1 = value)} // Update the 'text' state with user input
+            multiline={true} // Allow multiple lines in the input field
+          />
         </View>
+
         <View style={styles.buttonContainer}>
           {/* Button to start/stop speaking */}
           <Button
@@ -69,7 +70,7 @@ export default function App() {
       </View>
     </>
   );
-}
+};
 
 // Styling for the components
 const styles = StyleSheet.create({
@@ -116,3 +117,5 @@ const styles = StyleSheet.create({
     color: "white", // Header text color
   },
 });
+
+export default App;
